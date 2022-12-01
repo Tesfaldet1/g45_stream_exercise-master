@@ -4,6 +4,7 @@ import se.lexicon.vxo.model.Gender;
 import se.lexicon.vxo.model.Person;
 import se.lexicon.vxo.model.PersonDto;
 
+import javax.swing.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
@@ -103,10 +104,9 @@ public class StreamExercise {
     public void task7(){
         Person expected = new Person(5436, "Tea", "Håkansson", LocalDate.parse("1968-01-25"), Gender.FEMALE);
 
-        Optional<Person> optional = null;
+        Optional<Person> optional =people.stream()
+                .filter(person -> person.getPersonId()==5436).findAny();
 
-
-        //todo: Write code here
 
         assertNotNull(optional);
         assertTrue(optional.isPresent());
@@ -121,6 +121,8 @@ public class StreamExercise {
         LocalDate expectedBirthDate = LocalDate.parse("1910-01-02");
 
         Optional<Person> optional = null;
+                //people.stream().filter(person ->person.getDateOfBirth().
+
 
         //todo: Write code here
 
@@ -135,8 +137,10 @@ public class StreamExercise {
     public void task9(){
         int expectedSize = 892;
         LocalDate date = LocalDate.parse("1920-01-01");
-
         List<PersonDto> dtoList = null;
+                //people.stream().map(person -> person.getDateOfBirth().isBefore(LocalDate.parse("192.1+10"));
+
+
 
         //todo: Write code here
 
@@ -187,6 +191,7 @@ public class StreamExercise {
         String[] expected = {"Ada", "Ana", "Anna", "Ava", "Aya", "Bob", "Ebbe", "Efe", "Eje", "Elle", "Hannah", "Maram", "Natan", "Otto"};
 
         String[] result = null;
+                //people.stream().filter(person -> person.getFirstName().equalsIgnoreCase());
 
         //todo: Write code here
 
@@ -201,6 +206,7 @@ public class StreamExercise {
     public void task13(){
         int expectedSize = 107;
         Map<String, List<Person>> personMap = null;
+                //people.stream().map(person -> person.getLastName().length());
 
         //todo: Write code here
 
@@ -214,6 +220,7 @@ public class StreamExercise {
     @Test
     public void task14(){
         LocalDate[] _2020_dates = null;
+        LocalDate[] expeted = null;
 
         //todo: Write code here
 
