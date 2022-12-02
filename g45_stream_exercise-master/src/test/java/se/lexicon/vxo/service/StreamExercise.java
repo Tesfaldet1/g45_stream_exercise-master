@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.*;
+import java.util.function.Predicate;
 import java.util.function.ToIntFunction;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -120,11 +121,8 @@ public class StreamExercise {
     public void task8(){
         LocalDate expectedBirthDate = LocalDate.parse("1910-01-02");
 
-        Optional<Person> optional = null;
-                //people.stream().filter(person ->person.getDateOfBirth().
-
-
-        //todo: Write code here
+        Optional<Person> optional = people.stream().filter(person
+                ->person.getDateOfBirth().isEqual(LocalDate.parse("1910-01-02"))).findAny();
 
         assertNotNull(optional);
         assertEquals(expectedBirthDate, optional.get().getDateOfBirth());
@@ -137,19 +135,16 @@ public class StreamExercise {
     public void task9(){
         int expectedSize = 892;
         LocalDate date = LocalDate.parse("1920-01-01");
-        List<PersonDto> dtoList = null;
-                //people.stream().map(person -> person.getDateOfBirth().isBefore(LocalDate.parse("192.1+10"));
-
-
-
-        //todo: Write code here
+        List<Person> dtoList = people.stream().filter((person -> person
+                .getDateOfBirth().isBefore(LocalDate.parse("1920-01-01")))).collect(Collectors.toList());
 
         assertNotNull(dtoList);
         assertEquals(expectedSize, dtoList.size());
     }
 
     /**
-     * In a Stream Filter out one person with id 5914 from people and take the birthdate and build a string from data that the date contains then
+     * In a Stream Filter out one person with id 5914 from people and take
+     * the birthdate and build a string from data that the date contains then
      * return the string.
      */
     @Test
@@ -190,8 +185,10 @@ public class StreamExercise {
     public void task12(){
         String[] expected = {"Ada", "Ana", "Anna", "Ava", "Aya", "Bob", "Ebbe", "Efe", "Eje", "Elle", "Hannah", "Maram", "Natan", "Otto"};
 
-        String[] result = null;
-                //people.stream().filter(person -> person.getFirstName().equalsIgnoreCase());
+        String[] result = null;//Arrays.stream(people.toArray()).distinct()
+               // .anyMatch((Predicate<? super Object>)
+                    ///    people.stream().filter(person -> person.getFirstName()
+                              //  .contains(person.getLastName())).collect(Collectors.toMap(person -> person));
 
         //todo: Write code here
 
@@ -205,8 +202,7 @@ public class StreamExercise {
     @Test
     public void task13(){
         int expectedSize = 107;
-        Map<String, List<Person>> personMap = null;
-                //people.stream().map(person -> person.getLastName().length());
+        Map<String, List<Person>> personMap =  null;
 
         //todo: Write code here
 
